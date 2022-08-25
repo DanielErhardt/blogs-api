@@ -9,21 +9,26 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       title: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       content: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       userId: {
-        type: Sequelize.INTEGER
-      },
-      published: {
+        type: Sequelize.INTEGER,
         allowNull: false,
-        type: Sequelize.DATE
       },
-      updated: {
+      createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        field:'published'
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+        field:'updated'
       }
     });
   },
