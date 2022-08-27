@@ -1,12 +1,14 @@
 const router = require('express').Router();
+const rescue = require('express-rescue');
 const controller = require('../controllers/userController');
+const { verifyUserCreation } = require('../middlewares');
 
-router.get('/', controller.findAll);
+router.get('/', rescue(controller.findAll));
 
-router.get('/:id', controller.findByPk);
+router.get('/:id', rescue(controller.findByPk));
 
-router.post('/', controller.create);
+router.post('/', verifyUserCreation, rescue(controller.create));
 
-router.delete('/me', controller.destroyCurrentUser);
+router.delete('/me', rescue(controller.destroyCurrentUser));
 
 module.exports = router;
