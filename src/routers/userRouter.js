@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const rescue = require('express-rescue');
 const controller = require('../controllers/userController');
-const { verifyUserCreation } = require('../middlewares');
+const { verifyUserCreation, authenticate } = require('../middlewares');
 
-// router.get('/', rescue(controller.findAll));
+router.get('/', authenticate, rescue(controller.findAll));
 
 router.get('/:id', rescue(controller.findByPk));
 

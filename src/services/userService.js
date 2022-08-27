@@ -23,9 +23,7 @@ module.exports = {
     return token.create({ id: newUser.id });
   },
 
-  findAll: async () => {
-
-  },
+  findAll: async () => User.findAll({ attributes: { exclude: ['password'] } }),
 
   // findByPk: async (id) => {
 

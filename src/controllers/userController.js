@@ -15,9 +15,10 @@ module.exports = {
     res.status(201).json({ token });
   },
 
-  // findAll: async (req, res) => {
-
-  // },
+  findAll: async (_req, res) => {
+    const users = await userService.findAll();
+    res.status(200).json(users);
+  },
 
   // findByPk: async (req, res) => {
 
