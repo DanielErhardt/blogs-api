@@ -9,13 +9,18 @@ module.exports = {
     
     if (!user || user.password !== password) throw RequestError.invalidFields();
 
-    const newToken = token.create({ id: user.id });
-
-    return newToken;
+    return token.create({ id: user.id });
   },
 
-  create: async ({ email, password }) => {
+  create: async (newUserReq) => {
+    const { email } = newUserReq;
+    const user = await User.findOne({ where: { email } });
 
+    if (user) throw RequestError.userAlreadyRegistered();
+
+    const newUser = await User.create(newUserReq);
+
+    return token.create({ id: newUser.id });
   },
 
   findAll: async () => {

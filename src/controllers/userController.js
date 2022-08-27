@@ -2,13 +2,17 @@ const userService = require('../services/userService');
 
 module.exports = {
   login: async (req, res) => {
-    const { email, password } = req.body;
-    const token = await userService.login({ email, password });
+    const { body: login } = req;
+    const token = await userService.login(login);
+    req.headers.authorization = token;
     return res.status(200).json({ token });
   },
 
   create: async (req, res) => {
-
+    const { body: newUser } = req;
+    const token = await userService.create(newUser);
+    req.headers.authorization = token;
+    res.status(201).json({ token });
   },
 
   findAll: async (req, res) => {
