@@ -1,6 +1,6 @@
-module.exports = async (err, _req, res, _next) => {
-  const { statusCode, message } = err;
+module.exports = async (error, _req, res, _next) => {
+  const { statusCode, message, stack } = error;
   return statusCode
     ? res.status(statusCode).json({ message })
-    : res.status(500).json({ message: 'Run to the hills!', error: err });
+    : res.status(500).json({ message: 'Run to the hills!', stack });
 };
