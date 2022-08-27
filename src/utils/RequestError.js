@@ -4,6 +4,14 @@ class RequestError extends Error {
     this.statusCode = statusCode;
   }
 
+  static tokenNotFound() {
+    return new RequestError('Token not found', 401);
+  }
+
+  static invalidToken() {
+    return new RequestError('Expired or invalid token', 401);
+  }
+
   static invalidFields() {
     return new RequestError('Invalid fields', 400);
   }
