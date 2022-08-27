@@ -27,11 +27,11 @@ module.exports = {
 
   },
 
-  findByPk: async (id) => {
+  // findByPk: async (id) => {
 
-  },
+  // },
 
-  destroy: async (id) => {
+  // destroy: async (id) => {
 
-  },
+  // },
 };

@@ -3,19 +3,19 @@ module.exports = {
 
   },
 
-  findByPk: async (id) => {
+  // findByPk: async (id) => {
 
-  },
+  // },
 
-  create: async ({ title, content, categoryIds }) => {
+  // create: async ({ title, content, categoryIds }) => {
 
-  },
+  // },
 
-  edit: async ({ id, title, content }) => {
+  // edit: async ({ id, title, content }) => {
     
-  },
+  // },
 
-  destroy: async (id) => {
+  // destroy: async (id) => {
 
-  },
+  // },
 };

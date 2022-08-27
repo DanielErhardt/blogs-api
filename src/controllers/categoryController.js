@@ -1,11 +1,11 @@
-const { Category } = require('../services/categoryService');
+// const { Category } = require('../services/categoryService');
 
 module.exports = {
-  findAll: async (req, res) => {
+  // findAll: async (req, res) => {
 
-  },
+  // },
 
-  create: async (req, res) => {
+  // create: async (req, res) => {
 
-  },
+  // },
 };

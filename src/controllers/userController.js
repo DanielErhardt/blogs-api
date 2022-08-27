@@ -15,15 +15,15 @@ module.exports = {
     res.status(201).json({ token });
   },
 
-  findAll: async (req, res) => {
+  // findAll: async (req, res) => {
 
-  },
+  // },
 
-  findByPk: async (req, res) => {
+  // findByPk: async (req, res) => {
 
-  },
+  // },
 
-  destroyCurrentUser: async (req, res) => {
+  // destroyCurrentUser: async (req, res) => {
 
-  },
+  // },
 };
