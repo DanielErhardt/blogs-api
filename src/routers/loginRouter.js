@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const rescue = require('express-rescue');
 const userController = require('../controllers/userController');
-const loginVerifier = require('../middlewares/loginVerifier');
+const { verifyLogin } = require('../middlewares');
 
-router.post('/', loginVerifier, rescue(userController.login));
+router.post('/', verifyLogin, rescue(userController.login));
 
 module.exports = router;

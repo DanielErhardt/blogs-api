@@ -5,6 +5,6 @@ module.exports = async (req, _res, next) => {
   const { error } = loginSchema.validate(login);
   
   if (error) next(convertToRequestError(error));
-
+  
   next();
 };
