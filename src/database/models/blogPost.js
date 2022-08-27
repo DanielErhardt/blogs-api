@@ -4,6 +4,7 @@ const BlogPost = (sequelize, DataTypes) => {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
+      autoIncrement: true,
     },
     userId: DataTypes.INTEGER,
     title: DataTypes.STRING,
