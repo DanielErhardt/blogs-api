@@ -4,6 +4,10 @@ class RequestError extends Error {
     this.statusCode = statusCode;
   }
 
+  static userNotFound() {
+    return new RequestError('User does not exist', 404);
+  }
+
   static tokenNotFound() {
     return new RequestError('Token not found', 401);
   }
