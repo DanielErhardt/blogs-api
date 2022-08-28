@@ -1,8 +1,9 @@
 const router = require('express').Router();
-// const categoryController = require('../controllers/categoryController');
+const categoryController = require('../controllers/categoryController');
+const { authenticate, verifyCategory } = require('../middlewares');
 
 // router.get('/', categoryController.findAll);
 
-// router.post('/', categoryController.create);
+router.post('/', authenticate, verifyCategory, categoryController.create);
 
 module.exports = router;
