@@ -25,9 +25,16 @@ module.exports = {
 
   findAll: async () => User.findAll({ attributes: { exclude: ['password'] } }),
 
-  // findByPk: async (id) => {
+  findByPk: async (id) => {
+    const user = await User.findOne({
+      where: { id },
+      attributes: { exclude: ['password'] },
+    });
 
-  // },
+    if (!user) throw RequestError.userNotFound();
+
+    return user;
+  },
 
   // destroy: async (id) => {
 

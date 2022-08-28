@@ -20,9 +20,11 @@ module.exports = {
     res.status(200).json(users);
   },
 
-  // findByPk: async (req, res) => {
-
-  // },
+  findByPk: async (req, res) => {
+    const { params: { id } } = req;
+    const user = await userService.findByPk(id);
+    res.status(200).json(user);
+  },
 
   // destroyCurrentUser: async (req, res) => {
 

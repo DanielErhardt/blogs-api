@@ -5,7 +5,7 @@ const { verifyUserCreation, authenticate } = require('../middlewares');
 
 router.get('/', authenticate, rescue(controller.findAll));
 
-router.get('/:id', rescue(controller.findByPk));
+router.get('/:id', authenticate, rescue(controller.findByPk));
 
 router.post('/', verifyUserCreation, rescue(controller.create));
 
