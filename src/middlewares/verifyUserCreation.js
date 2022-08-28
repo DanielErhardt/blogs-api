@@ -1,8 +1,8 @@
-const { postUserSchema, convertToRequestError } = require('./validations');
+const { createUserSchema, convertToRequestError } = require('./validations');
 
 module.exports = (req, _res, next) => {
   const { body: newUser } = req;
-  const { error } = postUserSchema.validate(newUser);
+  const { error } = createUserSchema.validate(newUser);
   
   if (error) next(convertToRequestError(error));
 

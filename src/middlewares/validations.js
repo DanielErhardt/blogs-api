@@ -14,7 +14,7 @@ const loginSchema = Joi.object({
   }),
 });
 
-const postUserSchema = Joi.object({
+const createUserSchema = Joi.object({
   displayName: Joi.string().min(8).required().messages({
     'string.min': STRING_MIN,
   }),
@@ -35,7 +35,7 @@ const categorySchema = Joi.object({
 
 module.exports = {
   loginSchema,
-  postUserSchema,
+  createUserSchema,
   categorySchema,
   convertToRequestError: (validationError) => {
     const [code, message] = validationError.details[0].message.split('|');
