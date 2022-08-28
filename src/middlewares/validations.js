@@ -2,6 +2,7 @@ const Joi = require('joi');
 const RequestError = require('../utils/RequestError');
 
 const MISSING_FIELD = '400|Some required fields are missing';
+const REQUIRED_FIELD = '400|{#label} is required';
 const STRING_MIN = '400|{#label} length must be at least {#limit} characters long';
 
 const loginSchema = Joi.object({
@@ -26,11 +27,20 @@ const postUserSchema = Joi.object({
   image: Joi.string().required(),
 });
 
+const categorySchema = Joi.object({
+  name: Joi.string().required().messages({
+    'string.empty': REQUIRED_FIELD,
+  }),
+}).messages({
+  'any.required': REQUIRED_FIELD,
+});
+
 module.exports = {
   loginSchema,
   postUserSchema,
+  categorySchema,
   convertToRequestError: (validationError) => {
-    const { message } = validationError.details[0];
-    return RequestError.fromCompositeMessage(message);
+    const [code, message] = validationError.details[0].message.split('|');
+    return new RequestError(message, code);
   },
 };
