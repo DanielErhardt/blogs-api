@@ -28,9 +28,7 @@ const postUserSchema = Joi.object({
 });
 
 const categorySchema = Joi.object({
-  name: Joi.string().required().messages({
-    'string.empty': REQUIRED_FIELD,
-  }),
+  name: Joi.string().required(),
 }).messages({
   'any.required': REQUIRED_FIELD,
 });
