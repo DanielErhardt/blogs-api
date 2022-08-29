@@ -12,6 +12,10 @@ class RequestError extends Error {
     return new RequestError('"categoryIds" not found', 400);
   }
 
+  static unauthorizedUser() {
+    return new RequestError('Unauthorized user', 401);
+  }
+
   static userNotFound() {
     return new RequestError('User does not exist', 404);
   }
