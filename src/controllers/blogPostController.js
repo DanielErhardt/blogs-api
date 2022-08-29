@@ -19,9 +19,16 @@ module.exports = {
     res.status(201).json(createdPost);
   },
 
-  // edit: async (req, res) => {
-
-  // },
+  edit: async (req, res) => {
+    const {
+      params: { id: postId },
+      headers: { userId },
+      body: { title, content },
+    } = req;
+  
+    const editedPost = await blogPostService.edit({ postId, userId, title, content });
+    res.status(200).json(editedPost);
+  },
 
   // destroy: async (req, res) => {
 

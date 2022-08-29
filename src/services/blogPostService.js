@@ -1,7 +1,7 @@
 const { BlogPost, Category, PostCategory, User } = require('../database/models');
 const RequestError = require('../utils/RequestError');
 
-module.exports = {
+const postService = {
   findAll: async () => BlogPost.findAll({
     include: [
       {
@@ -53,11 +53,18 @@ module.exports = {
     return createdPost;
   },
 
-  // edit: async ({ id, title, content }) => {
-    
-  // },
+  edit: async ({ postId, userId, title, content }) => {
+    const post = await postService.findByPk(postId);
+    if (post.userId !== userId) throw RequestError.unauthorizedUser();
+    post.title = title;
+    post.content = content;
+    await post.save();
+    return post;
+  },
 
   // destroy: async (id) => {
 
   // },
 };
+
+module.exports = postService;
