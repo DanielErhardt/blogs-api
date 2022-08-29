@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { BlogPost, Category, PostCategory, User } = require('../database/models');
 const RequestError = require('../utils/RequestError');
 
@@ -51,6 +52,23 @@ const postService = {
     await PostCategory.bulkCreate(bulk);
 
     return createdPost;
+  },
+
+  search: async (searchTerm) => {
+    const posts = await BlogPost.findAll({
+      where: {
+        [Op.or]: {
+          title: { [Op.like]: `%${searchTerm}%` },
+          content: { [Op.like]: `%${searchTerm}%` },
+        },
+      },
+      include: [
+        { model: User, as: 'user', attributes: { exclude: 'password' } },
+        { model: Category, as: 'categories', through: { attributes: [] } },
+      ],
+    });
+
+    return posts || [];
   },
 
   edit: async ({ postId, userId, title, content }) => {

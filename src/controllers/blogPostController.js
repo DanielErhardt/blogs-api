@@ -19,6 +19,12 @@ module.exports = {
     res.status(201).json(createdPost);
   },
 
+  search: async (req, res) => {
+    const { query: { q } } = req;
+    const post = await blogPostService.search(q);
+    res.status(200).json(post);
+  },
+
   edit: async (req, res) => {
     const {
       params: { id: postId },
