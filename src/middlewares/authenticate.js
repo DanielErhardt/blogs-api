@@ -6,7 +6,8 @@ module.exports = async (req, _res, next) => {
   if (!authorization) next(RequestError.tokenNotFound());
 
   try {
-    token.verify(authorization);
+    const { id: userId } = token.verify(authorization);
+    req.headers.userId = userId;
     next();
   } catch (error) {
     next(RequestError.invalidToken());
