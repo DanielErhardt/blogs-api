@@ -33,10 +33,21 @@ const categorySchema = Joi.object({
   'any.required': REQUIRED_FIELD,
 });
 
+const blogPostSchema = Joi.object({
+  title: Joi.string().required().messages({
+    'string.empty': MISSING_FIELD,
+  }),
+  content: Joi.string().required().messages({
+    'string.empty': MISSING_FIELD,
+  }),
+  categoryIds: Joi.array().items(Joi.number()).required(),
+});
+
 module.exports = {
   loginSchema,
   createUserSchema,
   categorySchema,
+  blogPostSchema,
   convertToRequestError: (validationError) => {
     const [code, message] = validationError.details[0].message.split('|');
     return new RequestError(message, code);
