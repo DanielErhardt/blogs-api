@@ -4,6 +4,10 @@ class RequestError extends Error {
     this.statusCode = statusCode;
   }
 
+  static postNotFound() {
+    return new RequestError('Post does not exist', 404);
+  }
+
   static nonexistentCategoryIds() {
     return new RequestError('"categoryIds" not found', 400);
   }
