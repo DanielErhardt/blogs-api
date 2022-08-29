@@ -26,7 +26,9 @@ module.exports = {
     res.status(200).json(user);
   },
 
-  // destroyCurrentUser: async (req, res) => {
-
-  // },
+  destroyCurrentUser: async (req, res) => {
+    const { headers: { userId } } = req;
+    await userService.destroy(userId);
+    res.status(204).json();
+  },
 };

@@ -36,7 +36,5 @@ module.exports = {
     return user;
   },
 
-  // destroy: async (id) => {
-
-  // },
+  destroy: async (id) => User.destroy({ where: { id } }),
 };

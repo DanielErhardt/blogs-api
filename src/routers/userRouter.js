@@ -9,6 +9,6 @@ router.get('/:id', authenticate, rescue(controller.findByPk));
 
 router.post('/', verifyUserCreation, rescue(controller.create));
 
-// router.delete('/me', rescue(controller.destroyCurrentUser));
+router.delete('/me', authenticate, rescue(controller.destroyCurrentUser));
 
 module.exports = router;
