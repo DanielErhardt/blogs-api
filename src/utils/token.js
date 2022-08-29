@@ -4,7 +4,7 @@ require('dotenv').config();
 const SECRET = process.env.JWT_SECRET;
 const OPTIONS = {
   algorithm: 'HS256',
-  expiresIn: '1d',
+  expiresIn: '7d',
 };
 
 module.exports = {
