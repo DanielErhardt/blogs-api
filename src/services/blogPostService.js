@@ -1,10 +1,25 @@
-const { BlogPost, Category, PostCategory } = require('../database/models');
+const { BlogPost, Category, PostCategory, User } = require('../database/models');
 const RequestError = require('../utils/RequestError');
 
 module.exports = {
-  findAll: async () => {
-
-  },
+  findAll: async () => BlogPost.findAll({
+    include: [
+      {
+        model: User,
+        as: 'user',
+        attributes: {
+          exclude: 'password',
+        },
+      },
+      {
+        model: Category,
+        as: 'categories',
+        through: {
+          attributes: [],
+        },
+      },
+    ],
+  }),
 
   // findByPk: async (id) => {
 

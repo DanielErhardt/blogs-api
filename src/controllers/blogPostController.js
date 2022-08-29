@@ -1,8 +1,11 @@
 const blogPostService = require('../services/blogPostService');
 
 module.exports = {
-  // findAll: async (req, res) => {
-
+  findAll: async (_req, res) => {
+    const allPosts = await blogPostService.findAll();
+    res.status(200).json(allPosts);
+  },
+  
   // },
   
   // findByPk: async (req, res) => {

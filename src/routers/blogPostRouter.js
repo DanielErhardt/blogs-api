@@ -3,7 +3,7 @@ const rescue = require('express-rescue');
 const blogPostController = require('../controllers/blogPostController');
 const { authenticate, verifyBlogPost } = require('../middlewares');
 
-// router.get('/', rescue(blogPostController.findAll));
+router.get('/', authenticate, rescue(blogPostController.findAll));
 
 // router.get('/:id', rescue(blogPostController.findByPk));
 
