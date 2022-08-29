@@ -7,23 +7,35 @@ module.exports = {
       {
         model: User,
         as: 'user',
-        attributes: {
-          exclude: 'password',
-        },
+        attributes: { exclude: 'password' },
       },
       {
         model: Category,
         as: 'categories',
-        through: {
-          attributes: [],
-        },
+        through: { attributes: [] },
       },
     ],
   }),
 
-  // findByPk: async (id) => {
+  findByPk: async (id) => {
+    const post = await BlogPost.findByPk(id, {
+      include: [
+        {
+          model: User,
+          as: 'user',
+          attributes: { exclude: 'password' },
+        },
+        {
+          model: Category,
+          as: 'categories',
+          through: { attributes: [] },
+        },
+      ],
+    });
 
-  // },
+    if (!post) throw RequestError.postNotFound();
+    return post;
+  },
 
   create: async ({ userId, title, content, categoryIds }) => {
     const { count } = await Category.findAndCountAll({

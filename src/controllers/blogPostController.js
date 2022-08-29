@@ -6,11 +6,11 @@ module.exports = {
     res.status(200).json(allPosts);
   },
   
-  // },
-  
-  // findByPk: async (req, res) => {
-
-  // },
+  findByPk: async (req, res) => {
+    const { params: { id } } = req;
+    const post = await blogPostService.findByPk(id);
+    res.status(200).json(post);
+  },
 
   create: async (req, res) => {
     const { body: newPost, headers: { userId } } = req;

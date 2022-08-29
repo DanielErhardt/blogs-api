@@ -5,7 +5,7 @@ const { authenticate, verifyBlogPost } = require('../middlewares');
 
 router.get('/', authenticate, rescue(blogPostController.findAll));
 
-// router.get('/:id', rescue(blogPostController.findByPk));
+router.get('/:id', authenticate, rescue(blogPostController.findByPk));
 
 router.post('/', authenticate, verifyBlogPost, rescue(blogPostController.create));
 
