@@ -4,6 +4,10 @@ class RequestError extends Error {
     this.statusCode = statusCode;
   }
 
+  static nonexistentCategoryIds() {
+    return new RequestError('"categoryIds" not found', 400);
+  }
+
   static userNotFound() {
     return new RequestError('User does not exist', 404);
   }
