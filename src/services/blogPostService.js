@@ -1,6 +1,8 @@
 const { BlogPost, Category, PostCategory, User } = require('../database/models');
 const RequestError = require('../utils/RequestError');
 
+// https://sequelize.org/docs/v6/core-concepts/model-instances/
+
 const postService = {
   findAll: async () => BlogPost.findAll({
     include: [
@@ -39,9 +41,7 @@ const postService = {
 
   create: async ({ userId, title, content, categoryIds }) => {
     const { count } = await Category.findAndCountAll({
-      where: {
-        id: categoryIds,
-      },
+      where: { id: categoryIds },
     });
 
     if (count !== categoryIds.length) throw RequestError.nonexistentCategoryIds(); 
@@ -56,15 +56,16 @@ const postService = {
   edit: async ({ postId, userId, title, content }) => {
     const post = await postService.findByPk(postId);
     if (post.userId !== userId) throw RequestError.unauthorizedUser();
-    post.title = title;
-    post.content = content;
+    post.set({ title, content });
     await post.save();
     return post;
   },
 
-  // destroy: async (id) => {
-
-  // },
+  destroy: async ({ postId, userId }) => {
+    const post = await postService.findByPk(postId);
+    if (post.userId !== userId) throw RequestError.unauthorizedUser();
+    await post.destroy();
+  },
 };
 
 module.exports = postService;

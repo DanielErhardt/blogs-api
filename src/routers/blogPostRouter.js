@@ -11,6 +11,6 @@ router.post('/', authenticate, verifyPostCreation, rescue(blogPostController.cre
 
 router.put('/:id', authenticate, verifyPostEditing, rescue(blogPostController.edit));
 
-// router.delete('/:id', rescue(blogPostController.destroy));
+router.delete('/:id', authenticate, rescue(blogPostController.destroy));
 
 module.exports = router;

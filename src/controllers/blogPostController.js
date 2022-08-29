@@ -30,7 +30,9 @@ module.exports = {
     res.status(200).json(editedPost);
   },
 
-  // destroy: async (req, res) => {
-
-  // },
+  destroy: async (req, res) => {
+    const { params: { id: postId }, headers: { userId } } = req;
+    await blogPostService.destroy({ postId, userId });
+    res.status(204).json();
+  },
 };
