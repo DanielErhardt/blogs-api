@@ -92,8 +92,6 @@ To build a Blogs API that manager the creation and authentication of users, crea
 
 The mandatory tools for managing the database were the Node.js packages sequelize and sequelize-cli.
 
-  <br />
-
 ## Observations
 
 It was developed using MySQL database and Node.js packages such as express, express-rescue, mysql2, sequelize and sequelize-cli <br />
