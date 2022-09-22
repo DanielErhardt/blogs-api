@@ -7,7 +7,7 @@
 
 Construir uma API de Blogs para gerenciar a criação e autenticação de usuários, criação e edição de postagens, bem como o gerenciamento de suas categorias.
 
-As ferramentas obrigatórias para gerenciamento do banco de dados foram os pacotes Node.js sequelize e sequelize-cli.
+As ferramentas obrigatórias para criar e gerenciar o banco de dados foram os pacotes Node.js sequelize e sequelize-cli.
 
 ## Observações
 
@@ -90,7 +90,7 @@ npm start
 
 To build a Blogs API that manager the creation and authentication of users, creation and editing of posts, as well as managing their categories.
 
-The mandatory tools for managing the database were the Node.js packages sequelize and sequelize-cli.
+The mandatory tools for creating and managing the database were the Node.js packages sequelize and sequelize-cli.
 
 ## Observations
 
