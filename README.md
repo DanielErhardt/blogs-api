@@ -155,7 +155,7 @@ npm start
 | `POST`   | http://localhost:3000/post               |
 | `DELETE` | http://localhost:3000/post/:id           |
 
-### User
+### Categories
 
 | Request | URL                              |
 | ------- | -------------------------------- |
