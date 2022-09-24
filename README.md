@@ -1,4 +1,4 @@
-# Store Manager
+# Blog API
 
 <details> 
 <summary>:brazil: Versão em Português</summary>
@@ -88,7 +88,7 @@ npm start
 
 ## Objective
 
-To build a Blogs API that manager the creation and authentication of users, creation and editing of posts, as well as managing their categories.
+To build a Blogs API that manages the creation and authentication of users, creation and editing of posts, as well as managing their categories.
 
 The mandatory tools for creating and managing the database were the Node.js packages sequelize and sequelize-cli.
 
