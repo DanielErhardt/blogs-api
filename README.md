@@ -1,4 +1,4 @@
-# Blog API
+# Blogs API
 
 <details> 
 <summary>:brazil: Versão em Português</summary>
